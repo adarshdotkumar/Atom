@@ -102,6 +102,13 @@ body {
   transform-origin: left;
 }
 
+@keyframes ping-once {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--electron) 60%, transparent); }
+  100% { box-shadow: 0 0 0 24px transparent; }
+}
+
+.animate-ping-once { animation: ping-once 0.6s ease-out; }
+
 @media (prefers-reduced-motion: reduce) {
   .animate-rise {
     animation: none;
@@ -110,4 +117,5 @@ body {
   .atom-electron {
     animation: none;
   }
+  .animate-ping-once { animation: none; }
 }
