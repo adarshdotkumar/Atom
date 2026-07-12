@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+:root {
+  --ground: #ececf7;
+  --ink: #17171f;
+  --graphite: #6b6b78;
+  --electron: #2e32e6;
+}
+
+@theme inline {
+  --color-ground: var(--ground);
+  --color-ink: var(--ink);
+  --color-graphite: var(--graphite);
+  --color-electron: var(--electron);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+body {
+  background-color: var(--ground);
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--ink) 9%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 28px 28px;
+  color: var(--ink);
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise {
+  opacity: 0;
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* The "o" of "atom": a nucleus ring with an orbiting electron */
+.atom-o {
+  position: relative;
+  display: inline-block;
+  width: 0.62em;
+  height: 0.62em;
+  margin: 0 0.04em;
+  border: 0.09em solid currentColor;
+  border-radius: 50%;
+  vertical-align: baseline;
+  transform: translateY(0.08em);
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg) translateX(0.46em);
+  }
+  to {
+    transform: rotate(360deg) translateX(0.46em);
+  }
+}
+
+.atom-electron {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.13em;
+  height: 0.13em;
+  margin: -0.065em;
+  border-radius: 50%;
+  background: var(--electron);
+  animation: orbit 3.2s linear infinite;
+}
+
+.link-underline {
+  position: relative;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 100%;
+  background: var(--electron);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise {
+    animation: none;
+    opacity: 1;
+  }
+  .atom-electron {
+    animation: none;
+  }
+}
