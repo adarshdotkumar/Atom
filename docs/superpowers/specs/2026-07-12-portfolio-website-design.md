@@ -13,13 +13,26 @@ GitHub (`adarshdotkumar/Atom`).
 
 Phase 1 delivers the full site structure with placeholder content:
 
-- **Pages:** `/` (home/about), `/projects`, `/resume`, `/contact`
+- **Pages:** `/` (landing: branded hero + "Selected work" section),
+  `/work/[slug]` (one page per case study), `/resume`, `/contact`
+- **Case studies:** the landing's second section lists case studies as
+  cards; each links to its own page telling the story with text, images,
+  and small interactive animation snippets ("demos")
 - **Shared layout:** navigation + footer across all pages
 - **Contact:** links only (email, GitHub, LinkedIn) — no contact form
 - **Content:** placeholders throughout; real content swapped in later
 
-Out of scope for phase 1: blog, project case-study pages, contact form,
-custom domain, final branding.
+Out of scope for phase 1: blog, contact form, custom domain.
+
+### Case study content model
+
+Case studies live in `content/case-studies.ts` as typed data: metadata
+(slug, title, summary, year, cover) plus an ordered list of sections, each
+one of `text`, `image`, or `demo`. A `demo` section names a React component
+from a small registry (`components/demos/`) — this is how interactive
+animation snippets embed inside otherwise data-driven pages. Adding a case
+study = adding one entry to the data file (plus any demo components it
+uses). MDX remains rejected until long-form writing demands it.
 
 ## Stack
 
@@ -58,8 +71,12 @@ No animation library is installed speculatively.
 
 ## Design workflow
 
-- **Branding is deferred.** Start with a neutral, clean base; the visual
-  language emerges through iteration.
+- **Branding v1 (established in iteration):** identity built on the
+  project name *Atom* — headline "Design, down to the atom." with an
+  orbiting-electron "o" as the signature element. Palette: lab-lilac
+  ground `#ECECF7`, ink `#17171F`, graphite `#6B6B78`, electron blue
+  `#2E32E6` (sole accent). Type: Syne (display) + Instrument Sans (body).
+  Faint dot-lattice background. Iterating from here.
 - **Figma is involved in both directions:**
   - *Code → design:* built screens are pushed into Figma so branding
     exploration happens on real layouts.
