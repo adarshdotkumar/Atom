@@ -7,6 +7,20 @@ export function generateStaticParams() {
   return caseStudies.map(({ slug }) => ({ slug }));
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const study = getCaseStudy(slug);
+  if (!study) return {};
+  return {
+    title: `${study.title} — Adarsh Kumar`,
+    description: study.summary,
+  };
+}
+
 function Section({ section }: { section: CaseStudySection }) {
   if (section.type === "text") {
     return (

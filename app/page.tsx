@@ -25,7 +25,7 @@ export default function Home() {
         </div>
       </div>
 
-      <section id="work" className="px-8 py-24 sm:px-16">
+      <section id="work" className="py-24">
         <h2 className="font-display text-3xl font-bold">
           Selected work<span className="text-electron">.</span>
         </h2>

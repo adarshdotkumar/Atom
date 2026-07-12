@@ -1,5 +1,10 @@
 import { resume } from "@/content/resume";
 
+export const metadata = {
+  title: "Resume — Adarsh Kumar",
+  description: "Experience and education of Adarsh Kumar.",
+};
+
 export default function ResumePage() {
   return (
     <main className="flex-1 px-8 py-16 sm:px-16">

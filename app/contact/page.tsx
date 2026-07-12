@@ -1,5 +1,10 @@
 import { profile } from "@/content/profile";
 
+export const metadata = {
+  title: "Contact — Adarsh Kumar",
+  description: "Get in touch with Adarsh Kumar.",
+};
+
 export default function ContactPage() {
   return (
     <main className="flex flex-1 flex-col items-center justify-center px-8 py-16 text-center">
@@ -7,7 +12,7 @@ export default function ContactPage() {
         Say hello<span className="text-electron">.</span>
       </h1>
       <p className="animate-rise mt-6 max-w-md text-lg text-graphite [animation-delay:150ms]">
-        The fastest way to reach me is email. I read everything.
+        {profile.contactBlurb}
       </p>
       <div className="animate-rise mt-10 flex gap-8 [animation-delay:300ms]">
         <a href={profile.links.email} className="link-underline">Email</a>
